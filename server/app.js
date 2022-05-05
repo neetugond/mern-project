@@ -2,11 +2,21 @@ const express = require('express')
 
 const app = express();
 
+// middleware = if user is not login redirect to the login page, if login redirect to about page
+
+const middleware = (req, res, next) => {
+    console.log("hello from middleware")
+    next();
+    
+}
+
 app.get('/', (req, res) => {
+
     res.send("hello world from the server")
 })
 
-app.get('/about', (req, res) => {
+app.get('/about', middleware, (req, res) => {
+    console.log("about")
     res.send("hello world from the about")
 })
 
