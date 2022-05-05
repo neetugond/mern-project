@@ -1,6 +1,16 @@
+const mongoose = require('mongoose')
 const express = require('express')
 
 const app = express();
+
+const DB = "mongodb+srv://neetugond:neetugond@cluster0.smcfd.mongodb.net/mernstack?retryWrites=true&w=majority";
+
+// this return promise so for fullfilling the promise we use .then
+mongoose.connect(DB).then(() => {
+    console.log("connection successful")
+}).catch((err) => {
+    console.log("no connection")
+})
 
 // middleware = if user is not login redirect to the login page, if login redirect to about page
 
