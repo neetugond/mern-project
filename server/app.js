@@ -11,6 +11,11 @@ require('./db/conn')
 
 // const User = require('./model/userSchema')
 
+app.use(express.json())
+
+// middleware- we link the router files to make our routes easy
+app.use(require("./router/auth"))
+
 // how to access the connection from env file (process.env.givevaluename)
 
 
@@ -27,7 +32,8 @@ const middleware = (req, res, next) => {
 
 app.get('/', (req, res) => {
 
-    res.send("hello world from the server")
+    res.send("hello world from the server app.js")
+    //this get ignore becoz on line no 16 we have require home page from auth.js and once it get thw data below everything get ignore
 })
 
 app.get('/about', middleware, (req, res) => {
