@@ -9,6 +9,8 @@ dotenv.config({ path: './config.env' });
 
 require('./db/conn')
 
+// const User = require('./model/userSchema')
+
 // how to access the connection from env file (process.env.givevaluename)
 
 
