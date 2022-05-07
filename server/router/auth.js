@@ -53,18 +53,37 @@ router.post("/register", async (req, res) => {
 
         res.status(201).json({ message: "user registered successfully" });
 
-        // or
-
-        // const userRegister = await user.save();
-        // if (userRegister) {
-        //     res.status(201).json({ message: "user registered successfully" });
-        // } else {
-        //     res.status(500).json({ error: "Failed to registered" })
-        // }
 
     } catch (err) {
         console.log(err);
     }
+})
+
+// login
+
+router.post("/signin", async (req, res) => {
+    // console.log(req.body);
+    // res.json({message:"awesome"})
+    
+     try {
+        const {email,password} = req.body
+   
+        if (!email || !password) {
+            return res.status(400).json({ error: "plz filled the field properly" });
+        }
+      const userLogin = await User.findOne({ email: email})
+    //   console.log('userLogin:', userLogin)
+        if (!userLogin) {
+            res.status(400).json({ error: "user error" });
+        } else {
+            res.status(200).json({ message : "user signin successfully" }); 
+        }
+     
+
+
+     } catch (err) {
+        console.log(err);
+     }
 })
 
  module.exports = router
