@@ -1,4 +1,5 @@
 
+const bcrypt = require('bcryptjs')
 
 const express = require('express');
 
@@ -71,22 +72,25 @@ router.post("/signin", async (req, res) => {
     // console.log(req.body);
     // res.json({message:"awesome"})
     
-     try {
-        const {email,password} = req.body
+    try {
+        const { email, password } = req.body
    
         if (!email || !password) {
             return res.status(400).json({ error: "plz filled the field properly" });
         }
-      const userLogin = await User.findOne({ email: email})
-    //   console.log('userLogin:', userLogin)
-        if (!userLogin) {
+        const userLogin = await User.findOne({ email: email })
+        //   console.log('userLogin:', userLogin)
+        //  compare passwordthrough bcrypt compare
+        if (userLogin) {
+            const isMatch = await bcrypt.compare(password, userLogin.password)
+        if (!isMatch) {
             res.status(400).json({ error: "user error" });
         } else {
-            res.status(200).json({ message : "user signin successfully" }); 
+            res.status(200).json({ message: "user signin successfully" });
         }
-     
-
-
+   } else {
+             res.status(400).json({error :"Invalid credential"})
+         }
      } catch (err) {
         console.log(err);
      }

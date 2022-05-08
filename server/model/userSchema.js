@@ -45,13 +45,13 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
-userSchema.pre('save', async function (next) {
-    //modified only password
-     if (this.isModified('email')) {
-         this.email = await bcrypt.hash(this.email, 12); //12 round 
-     }
-     next()
-})
+// userSchema.pre('save', async function (next) {
+//     //modified only password
+//      if (this.isModified('email')) {
+//          this.email = await bcrypt.hash(this.email, 12); //12 round 
+//      }
+//      next()
+// })
  
 
 
