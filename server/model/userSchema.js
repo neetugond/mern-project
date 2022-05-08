@@ -45,6 +45,16 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
+userSchema.pre('save', async function (next) {
+    //modified only password
+     if (this.isModified('email')) {
+         this.email = await bcrypt.hash(this.email, 12); //12 round 
+     }
+     next()
+})
+ 
+
+
 // now we need to attach this document with our project we can do that with the help of model = collection create
 
 // first letter should be capital letter USER - name of the collection which we are creating it will automatically become plural in database userSchema- document structure which we created above
