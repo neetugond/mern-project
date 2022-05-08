@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 
 const router = express.Router();
@@ -47,9 +49,12 @@ router.post("/register", async (req, res) => {
         }
         const user = new User({ name, email, phone, work, password, cpassword });
 
-        // this
+        // here brcypt pre middleware 
 
-        await user.save();
+         await user.save();
+
+        // console.log(`${user} user Registered successfully`)
+        // console.log(userRegister)
 
         res.status(201).json({ message: "user registered successfully" });
 
