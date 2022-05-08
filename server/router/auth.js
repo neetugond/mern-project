@@ -62,6 +62,15 @@ router.post("/signin", async (req, res) => {
             // generate jwt token; //why here becoz we are getting all the details in userLogin 
             const token = await userLogin.generateAuthToken();
             console.log(token)
+
+            // stored cookies
+            // key = jwtToken and value= token (from above line no 63)
+            res.cookie('jwtToken', token, {
+                // When to expires time 30day in mili second
+                expires: new Date(Date.now() + 25892000000), 
+                // where
+                httpOnly:true
+             })
         if (!isMatch) {
             res.status(400).json({ error: "user error" });
         } else {
