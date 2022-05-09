@@ -27,7 +27,7 @@ const PORT = process.env.PORT
 const middleware = (req, res, next) => {
     console.log("hello from middleware")
     next();
-    
+
 }
 
 app.get('/', (req, res) => {
@@ -52,10 +52,10 @@ app.get('/login', (req, res) => {
 
 })
 
-app.get('/signup', (req, res) => {
-    res.send("hello world from the signup page")
+// app.get('/signup', (req, res) => {
+//     res.send("hello world from the signup page")
 
-})
+// })
 // console.log("this is my first mern project")
 
 app.listen(PORT, () => {

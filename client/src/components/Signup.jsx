@@ -5,6 +5,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import PasswordIcon from '@mui/icons-material/Password';
+import axios from "axios"
 
 const Signup = () => {
 
@@ -12,20 +13,23 @@ const Signup = () => {
         name: "",
         email: "",
         phone: "",
+        work : "",
         password: "",
         cpassword: ""
 
     });
 
-    let name;
-    let value;
+    // let name;
+    // let value;
 
     const handleInputs = (e) => {
-        // console.log('e:', e)
-        name = e.target.name;
-        value = e.target.value;
-        
-        setUser({...user, [name]:value})
+        const { id, value } = e.target
+        setUser({...user, [id] : value})
+    }
+    const handleChange = () => {
+        axios.post("http://localhost:4000/register", user).then(() => {
+            alert("User Created")
+        })
     }
 
   return (
@@ -38,27 +42,31 @@ const Signup = () => {
               
               <div className='signup-input-div'>
                   <span className='signup-icon'><AccountCircleIcon/></span>
-                  <input value={user.name} onChange={handleInputs}  type="text" placeholder='Enter your name' />
+                  <input id='name' onChange={handleInputs}  type="text" placeholder='Enter your name' />
               </div>
               <div className='signup-input-div'>
                   <span className='signup-icon'> <EmailIcon/></span>
-                  <input value={user.email} onChange={handleInputs} type="text" placeholder='Enter your email' />
+                  <input id='email' onChange={handleInputs} type="text" placeholder='Enter your email' />
               </div>
               <div className='signup-input-div'>
                   <span className='signup-icon'> <LocalPhoneIcon/></span>
-                  <input value={user.phone} onChange={handleInputs}  type="text" placeholder='Enter your mobile no.' />
+                  <input id='phone' onChange={handleInputs}  type="text" placeholder='Enter your mobile no.' />
+              </div>
+              <div className='signup-input-div'>
+                  <span className='signup-icon'> <LocalPhoneIcon/></span>
+                  <input id='work' onChange={handleInputs}  type="text" placeholder='Enter your work' />
               </div>
               <div className='signup-input-div'>
                   <span className='signup-icon'><PasswordIcon/></span>
-                  <input value={user.password} onChange={handleInputs}  type="text" placeholder='create password' />
+                  <input id='password' onChange={handleInputs}  type="text" placeholder='create password' />
               </div>
               <div className='signup-input-div'>
                   <span className='signup-icon'><PasswordIcon/></span>
-                  <input value={user.cpassword} onChange={handleInputs}  type="text" placeholder='confirm password' />
+                  <input id='cpassword' onChange={handleInputs}  type="text" placeholder='confirm password' />
               </div>
 
           </div>
-          <Button variant='outlined'>Register</Button>
+          <Button variant='outlined' onClick={()=>  handleChange()} >Register</Button>
           <div className="signup-login-main">
           <NavLink to='/login' className='signup-login'>I am already register</NavLink>
           </div>
