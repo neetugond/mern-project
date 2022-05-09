@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 const Navbar = () => {
   return (
-      <div>
+      <div className='navbar-main-div'>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
   <a class="navbar-brand" href="#">

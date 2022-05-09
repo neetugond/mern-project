@@ -1,1 +1,26 @@
+.navbar-main-div{
+  background-color: blue;
+}
 
+.signup-main-div, .signin-main-div{
+/* border: 1px solid red; */
+width: 30%;
+margin: auto;
+margin-top: 10%;
+}
+.signup-input-div, .signin-input-div{
+  /* border: 1px solid blue; */
+  margin: 2%;
+
+}
+.contact-detail-div{
+  /* border:  1px solid grey; */
+  width: 560px;
+  display: flex;
+  gap: 2%;
+}
+.contact-sub-detail{
+  border:  1px solid grey;
+  padding-left: 2%;
+  padding-right: 3%;
+}

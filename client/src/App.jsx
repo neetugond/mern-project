@@ -4,7 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
-import Login from './components/Login'
+import Login from './components/SignIn'
 import Signup from './components/Signup'
 import Contact from './components/Contact'
 
